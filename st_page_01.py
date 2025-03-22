@@ -18,16 +18,18 @@ pa_temp_zip = 'temp_zip'
 zip_name_temp = 'zipped_wavs_temp'
 zip_name_ext = os.path.join(pa_temp_zip, zip_name_temp + '.zip')
 
-# upload mp3 to  temp dir
-with st.form("my-form", clear_on_submit=True):
-    uploaded_files = st.file_uploader("Choose MP3 files", accept_multiple_files=True, type = ['mp3'])
-    submitted = st.form_submit_button("submit")
+# # upload mp3 to  temp dir
+# with st.form("my-form", clear_on_submit=True):
+#     uploaded_files = st.file_uploader("Choose MP3 files", accept_multiple_files=True, type = ['mp3'])
+#     submitted = st.form_submit_button("submit")
+
 
 # flush (sorry mr hankey)
-col_a1, col_a2,= st.columns([0.80, 0.80, ])
+col_a1, col_a2,= st.columns([0.80, 0.80])
 
 with col_a1: 
-    with st.form(key = "f01", border=False):
+    with st.form(key = "f01", border=False, clear_on_submit=True):
+        uploaded_files = st.file_uploader("Choose MP3 files", accept_multiple_files=True, type = ['mp3'])
         submitted01 = st.form_submit_button("Upload", type="primary")
         if submitted01: 
             for upfi in uploaded_files:
@@ -36,9 +38,10 @@ with col_a1:
                 # st.text(len(bytes_data))
                 with open(os.path.join(pa_temp_mp3, upfi.name), "wb") as f:
                     f.write(bytes_data)
-
 with col_a2: 
-    with st.form(key = "f03", border=False):
+    st.subheader("")
+    st.subheader("")
+    with st.form(key = "f03", border=False): 
         submitted03 = st.form_submit_button("Convert to Wav", type="primary")
         if submitted03: 
             for fi in [a for a in os.listdir(pa_temp_mp3) if '.mp3' in a]:
