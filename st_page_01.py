@@ -23,12 +23,10 @@ with st.form("my-form", clear_on_submit=True):
     uploaded_files = st.file_uploader("Choose MP3 files", accept_multiple_files=True, type = ['mp3'])
     submitted = st.form_submit_button("submit")
 
-
 # flush (sorry mr hankey)
 col_a1, col_a2,= st.columns([0.80, 0.80, ])
 
 with col_a1: 
-    
     with st.form(key = "f01", border=False):
         submitted01 = st.form_submit_button("Upload", type="primary")
         if submitted01: 
@@ -54,9 +52,6 @@ with col_a2:
                 os.remove(zip_name_ext)       
             shutil.make_archive(base_name = os.path.join(pa_temp_zip, zip_name_temp) , format = 'zip', root_dir = pa_temp_wav) 
 
-
-
-
 # flush (sorry mr hankey)
 col_a1, col_a2,= st.columns([0.80, 0.80, ])
 with col_a1: 
@@ -80,8 +75,8 @@ with col_a1:
 with col_a2: 
     st.dataframe(os.listdir(pa_temp_wav))
 
-st.dataframe(os.listdir(pa_temp_zip))
-st.text(zip_name_ext)
+# st.dataframe(os.listdir(pa_temp_zip))
+# st.text(zip_name_ext)
 
 # download 
 if os.path.exists(zip_name_ext):
