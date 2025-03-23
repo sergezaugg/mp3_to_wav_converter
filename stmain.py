@@ -10,6 +10,7 @@ st.set_page_config(layout="wide")
 
 pages = [
     st.Page("st_page_01.py", title="Interactive"),
+    st.Page("st_page_02.py", title="Info"),
     ]
 
 pg = st.navigation(pages)
@@ -19,8 +20,10 @@ pg.run()
 with st.sidebar:
     st.subheader("Batch convert mp3 to wav")
     st.text("-- Under development --")
-    st.text("Objective: convert mp3 to wav for further processing in Python/Pytorch")
-    st.text("Primarily meant fo XC MP3 data")
-    st.text("Uses ffmpeg")
-
+    st.text("""
+            Allows to convert several mp3 to wav while controlling the sampling frequency and number of channels. 
+            Primarily for further processing with Python/Pytorch.
+            Uses ffmpeg in the back. 
+            """)
+   
   

@@ -48,7 +48,7 @@ def frag_see_content():
 def do_upload():
     with st.form(key = "f01", border=False, clear_on_submit=True):
         uploaded_files = st.file_uploader("Choose MP3 files", accept_multiple_files=True, type = ['mp3'])
-        submitted01 = st.form_submit_button("Upload", type="primary")
+        submitted01 = st.form_submit_button("Upload", type="secondary")
         if submitted01: 
             for upfi in uploaded_files:
                 bytes_data = upfi.read()
@@ -58,7 +58,7 @@ def do_upload():
 
 def convert_wav_and_zip(fs, nch):
     with st.form(key = "f03", border=False): 
-        submitted03 = st.form_submit_button("Convert to Wav", type="primary")
+        submitted03 = st.form_submit_button("Convert to Wav", type="secondary")
         if submitted03: 
             for fi in [a for a in os.listdir(pa_temp_mp3) if '.mp3' in a]:
                 pai = os.path.join(pa_temp_mp3, fi)
@@ -78,14 +78,14 @@ def flush():
     col_a1, col_a2,= st.columns([0.80, 0.80])
     with col_a1: 
         with st.form(key = "f10", border=False):
-            submitted10 = st.form_submit_button("Flush MP3s", type="primary")
+            submitted10 = st.form_submit_button("Flush MP3s", type="secondary")
             if submitted10: 
                 for fi in os.listdir(pa_temp_mp3):
                     os.remove(os.path.join(pa_temp_mp3, fi))
                 st.rerun()    
     with col_a2: 
         with st.form(key = "f11", border=False):
-            submitted11 = st.form_submit_button("Flush WAVs", type="primary")
+            submitted11 = st.form_submit_button("Flush WAVs", type="secondary")
             if submitted11:
                 if os.path.exists(zip_name_ext):
                     os.remove(zip_name_ext)  
@@ -102,7 +102,8 @@ with ca1:
 
 with ca2:
     sampl_freq = st.number_input("Sampling frequency of wav files", min_value=1, max_value=100000, value=24000, step=1) 
-    num_ch = selection = st.pills("Nb channels of wave files", [1,2], default = 1)
+    # num_ch = st.pills("Nb channels of wave files", [1,2], default = 1)
+    num_ch = st.radio("Nb channels of wave files", options = [1,2], horizontal=True)
     a1, a2 = st.columns([0.25, 0.25])
     with a1:
         st.text("Sel: ch={:01n}".format(num_ch) + " fs={:01n}".format(sampl_freq) )  
