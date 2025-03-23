@@ -18,6 +18,14 @@ pa_temp_zip = 'temp_zip'
 zip_name_temp = 'zipped_wavs_temp'
 zip_name_ext = os.path.join(pa_temp_zip, zip_name_temp + '.zip')
 
+# quick fix, haha
+if not os.path.exists(pa_temp_mp3):
+    os.makedirs(pa_temp_mp3)
+if not os.path.exists(pa_temp_wav):
+    os.makedirs(pa_temp_wav) 
+if not os.path.exists(pa_temp_zip):
+    os.makedirs(pa_temp_zip)
+
 # initialize session state 
 if 'ffmpeg' not in ss:
     ss['ffmpeg'] = {}
