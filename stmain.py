@@ -18,7 +18,7 @@ pg = st.navigation(pages)
 pg.run()
 
 with st.sidebar:
-    st.subheader("Batch convert mp3 to wav")
+    st.subheader("BATCH CONVERT MP3 TO WAV")
     st.text("-- Under development --")
     st.text("""
             Allows to convert several mp3 to wav while controlling the sampling frequency and number of channels. 
