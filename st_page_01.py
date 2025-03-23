@@ -133,47 +133,4 @@ frag_see_content()
 flush()
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# # see current contents 
-# col_a1, col_a2,= st.columns(2)
-# with col_a1: 
-#     st.dataframe(os.listdir(pa_temp_mp3), use_container_width = True)
-# with col_a2: 
-#     st.dataframe(os.listdir(pa_temp_wav), use_container_width = True)
-
-
-# # download 
-# if os.path.exists(zip_name_ext):
-#     with open(zip_name_ext, "rb") as f:
-#         timstamp = datetime.datetime.now().strftime('%Y%m%dT%H%M%S')   
-#         st.download_button(label="Download zipped wavs", data=f, file_name = timstamp + '_ziped_wavs.zip')
-# else:
-#     st.text("No zip available for download!")    
-  
-# freg_do_download()
-
-
-
-
-
-
-    
+ 

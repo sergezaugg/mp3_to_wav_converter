@@ -6,26 +6,21 @@
 import streamlit as st
 
 st.subheader("Batch convert mp3 to wav")
-st.text("-- Under development --")
-st.text("""
-        Allows to convert several mp3 to wav while controlling the sampling frequency and number of channels. 
-        Primarily for further processing with Python/Pytorch.
-        Uses ffmpeg in the back. 
 
-        onyl converts to 16-bit wavs
-
-
-        use case: convert hundreds of mp3 from xc (varvariable n-ch and fs) to a neat collection of wavs all with same fs and n-ch 
-
-
-
-        wav will not correct mp3 artefacts !
-
-        add link to ffmpeg
-
-        add link to xc
-
-        """)
+st.markdown(''' 
+        Allows to convert many mp3 to wav while controlling the sampling frequency and number of channels. 
+            
+        Uses [ffmpeg](https://ffmpeg.org) in the back. 
+            
+        Only converts to wavs with a bit-depth of 16.
+            
+        Conversion to wav will not correct mp3 artifacts.
+            
+        Was develop for bio-acoustic projects to convert many mp3 downloaded from [xeno-canto](https://xeno-canto.org).
+            
+        Wav files with fixed sampling frequency are easier to handle in ML projects with Python/Pytorch.
+            
+        ''')
 
 
 
