@@ -17,6 +17,10 @@ pg = st.navigation(pages)
 pg.run()
 
 with st.sidebar:
+    st.subheader("Batch convert mp3 to wav")
     st.text("-- Under development --")
-    st.title(""); st.title(""); st.title(""); st.title(""); st.title(""); st.title(""); st.title("")
+    st.text("Objective: convert mp3 to wav for further processing in Python/Pytorch")
+    st.text("Primarily meant fo XC MP3 data")
+    st.text("Uses ffmpeg")
+
   
