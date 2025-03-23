@@ -1,6 +1,6 @@
 #--------------------             
 # Author : Serge Zaugg
-# Description : Streamlit page 
+# Description : Streamlit main page 
 #--------------------
 
 import streamlit as st

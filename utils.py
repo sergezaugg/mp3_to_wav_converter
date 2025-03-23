@@ -1,12 +1,11 @@
 #--------------------             
 # Author : Serge Zaugg
-# Description : Utility functions used by main.py
+# Description : Utility functions 
 #--------------------
 
 import os
 import numpy as np
 import pandas as pd
-# import plotly.express as px
 import streamlit as st
 from streamlit import session_state as ss
 import subprocess
