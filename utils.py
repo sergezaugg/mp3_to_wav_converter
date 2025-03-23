@@ -12,10 +12,8 @@ from streamlit import session_state as ss
 import subprocess
 import os
 
-
-
 st.cache_data
-def mp3_to_wav(patin, paout, target_fs = 20000):
+def mp3_to_wav(patin, paout, target_fs = 20000, n_chan = 1):
         """   
         """
         try:
@@ -23,7 +21,7 @@ def mp3_to_wav(patin, paout, target_fs = 20000):
                 '-y', # -y overwrite without asking 
                 '-i', patin, # '-i' # infile must be specifitd after -i
                 '-ar', str(target_fs), # -ar rate set audio sampling rate (in Hz)
-                '-ac', '1', # stereo to mono, take left channel # -ac channels set number of audio channels
+                '-ac', str(n_chan), # '1', # stereo to mono, take left channel # -ac channels set number of audio channels
                 paout
                 ])
         except:
@@ -31,4 +29,7 @@ def mp3_to_wav(patin, paout, target_fs = 20000):
 
 
 
+
+
+ 
             
