@@ -36,6 +36,9 @@ with open(pout, "wb") as f:
 # ---------------------------------------------
 # streamlit 
 
+#   inspirede by 
+# https://github.com/Franky1/Streamlit-ffmpeg-Test
+
 uploaded_files = st.file_uploader("(1) Choose MP3 files", accept_multiple_files=True, type = ['mp3'])
 buf = uploaded_files[0].read()
 
