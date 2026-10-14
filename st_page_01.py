@@ -10,7 +10,6 @@ from utils import mp3_to_wav
 import shutil
 import datetime
 import pandas as pd
-import ffmpeg
 from io import BytesIO
 
 
@@ -79,8 +78,8 @@ def do_upload(he1, he2):
                 ss['files']['mp3'] = uploaded_files
                 for upfi in uploaded_files:
                     bytes_data = upfi.read()
-                    # with open(os.path.join(pa_temp_mp3, upfi.name), "wb") as f:
-                    #     f.write(bytes_data)
+                    with open(os.path.join(pa_temp_mp3, upfi.name), "wb") as f:
+                        f.write(bytes_data)
 
 @st.fragment
 def prepare_params_for_ffmpeg():
@@ -100,23 +99,16 @@ def convert_wav_and_zip():
                 # <class 'streamlit.runtime.uploaded_file_manager.UploadedFile'>
                 # @ UploadedFile class is a subclass of BytesIO, and therefore is "file-like".
                 pai = fi
-                # pao = os.path.join(pa_temp_wav, 'aaa.wav')
+                pao = os.path.join(pa_temp_wav, 'aaa.wav')
                 print(type(pai))
-                # print(pai.file_id)
+                print(pai.file_id)
 
-              
-
-
-
-
-
-
-                # mp3_to_wav(patin = pai, paout = pao, target_fs = ss['ffmpeg']['fs'], n_chan = ss['ffmpeg']['nch'])
-            # # ZIP        
-            # if os.path.exists(zip_name_ext):
-            #     os.remove(zip_name_ext) 
-            # if len(os.listdir(pa_temp_wav))>0:          
-            #     shutil.make_archive(base_name = os.path.join(pa_temp_zip, zip_name_temp), format = 'zip', root_dir = pa_temp_wav) 
+                mp3_to_wav(patin = pai, paout = pao, target_fs = ss['ffmpeg']['fs'], n_chan = ss['ffmpeg']['nch'])
+            # ZIP        
+            if os.path.exists(zip_name_ext):
+                os.remove(zip_name_ext) 
+            if len(os.listdir(pa_temp_wav))>0:          
+                shutil.make_archive(base_name = os.path.join(pa_temp_zip, zip_name_temp), format = 'zip', root_dir = pa_temp_wav) 
 
 
 @st.fragment
@@ -160,23 +152,23 @@ with ca2:
     with st.container(height=70, border=True):   
         convert_wav_and_zip()
 
-# with ca3:
-#     with st.container(height=190, border=True):
-#         print("ha")
-#         st.markdown(''' 
-#                 Quick help
+with ca3:
+    with st.container(height=190, border=True):
+        print("ha")
+        st.markdown(''' 
+                Quick help
 
-#                 (1) Select files with "(1) Choose MP3 files" and confirm with "(2) Upload"
+                (1) Select files with "(1) Choose MP3 files" and confirm with "(2) Upload"
                     
-#                 (2) Only converts to wavs with a bit-depth of 16.
+                (2) Only converts to wavs with a bit-depth of 16.
                 
-#                 ''')
-#     with st.container(height=70, border=True):     
-#         frag_do_download()
+                ''')
+    with st.container(height=70, border=True):     
+        frag_do_download()
 
-# frag_see_content()
+frag_see_content()
 
-# flush()
+flush()
 
 
  
